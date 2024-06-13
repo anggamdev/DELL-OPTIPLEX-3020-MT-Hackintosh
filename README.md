@@ -3,14 +3,16 @@
 
 Hackintosh for Build Up PC Dell Optiplex 3020 Mini Tower 
 
-[![](https://github.com/anggamdev/m910s-rx550-lexa/blob/main/Lenovo%20ThinkCentre%20M910s.jpg)](http:https://github.com/anggamdev/m910s-rx550-lexa/blob/main/Lenovo%20ThinkCentre%20M910s.jpg//)
-### Boot :
+[![](https://github.com/anggamdev/DELL-OPTIPLEX-3020-MT-Hackintosh/blob/main/Hackintosh%20Dell%20Optiplex%203020%20Mini%20Tower.jpg)](https://github.com/anggamdev/DELL-OPTIPLEX-3020-MT-Hackintosh/blob/main/Hackintosh%20Dell%20Optiplex%203020%20Mini%20Tower.jpg//)
+
+
+### Mode Boot :
 
 - OpenCore
 - macOS BigSur 11.7.10
-- Boot Mode : UEFI
+- Mode : UEFI
 
-### Tested Specifications :
+### Sudah Test di Spek :
 - Intel® H81 Chipset
 - Processor Intel® Core™ i3-4150 Haswell / Core™ i5-4570 Haswell
 - Integrated Intel® HD Graphics 4400 / 4600
@@ -25,58 +27,57 @@ Hackintosh for Build Up PC Dell Optiplex 3020 Mini Tower
 
 
 
-
-### Work :
+### Berkerja Normal  :
 - QE/CI Intel® HD Graphics 4400 / 4600 Haswell
 - Restart and Shutdown
 - Sleep and Wake
 - CPU Power Management
-- Ethernet
-- Audio Jack and Internal Mic (Front & Rear)
-- Display Output : Display Port 
-- Brightness : use [Monitor Control](https://github.com/MonitorControl/MonitorControl#readme "Monitor Control")
-- All USB Ports
-- Etc
+- Ethernet / Internet lewat LAN
+- Audio Jack and Internal Mic (Depan & Belakang)
+- Display Output : wajib pakai Display Port 
+- Brightness : pakai [Monitor Control](https://github.com/MonitorControl/MonitorControl#readme "Monitor Control")
+- Semua USB Ports
+- Lainnya
 
-### Not Work :-(
+### Tidak Berjalan / Bugs :-(
 
-- d-Sub/VGA Port
+- Port d-Sub/VGA 
 
-### [Download EFI](https://github.com/anggamdev/m910s-rx550-lexa/releases/tag/0.1) 
+### [Download EFI](https://github.com/anggamdev/DELL-OPTIPLEX-3020-MT-Hackintosh/releases/tag/1) 
 
-## Note :
-- Please Generate SMBIOS with Tutorial [https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html#imac](http:https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html#imac// "https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html#imac")
+## CATATAN (WAJIB):
+- Silakan buat SMBIOS dengan Tutorial [https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html#imac](http:https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html#imac// "https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html#imac")
 
-## Important !!
+## PENTING !!, WAJIB DILAKUKAN
 
-- Boot into the USB drive. OpenCore should launch now, giving you some boot options
-- Quickly press an up or down arrow, because OC will boot the default option after a few seconds, and we are not ready to boot the installer yet.
-- If you've booted Clover on this machine before, choose Reset NVRAM to clear the NVRAM variables. It is the last boot option in OpenCore.
-- Select modGRUBShell.efi
+- Boot ke drive USB. setelah masuk Menu Open Core, tekan tombol keyboard ke bawah, lalu klik Reset NVRAM
+- Kemudian Reboot, dan masuk ke Menu Opencore lagi
+- Lalu klik Select modGRUBShell.efi
 
-Now you should be in a grub shell, which is indicated by the
+Kemudian kamu masuk ke mode Shell seperti CMD , dan pastikan ada menu seperti dibawah :
 
 ```
 grub>
 ``` 
 
-prompt. We need to execute all the commands below. Pay special attention to run the commands that are meant for your computer. If you mismatch these commands, reset the motherboard, as applying the wrong variables will cause undefined behavior. See note after the section on how to do it. Keep in mind, resetting the NVRAM via OpenCore will not affect these values.
+dan masukan beberapa perintah dibawah ini :
 
 
 
-### Disable CFG Lock:
+### untuk Menonaktikan CFG Lock:
 
 ``` 
 setup_var 0xD9E 0x0  
 ```
 
-### Set DVMT pre-alloc to 64MB
+### Set DVMT (iGPU) ke 64MB
 
 ``` 
 setup_var 0x263 0x2
 ``` 
 
-### Enable EHCI hand-off
+### Untuk mengaktifkan EHCI hand-off
+catatan : masukan satu persatu
 
 ``` 
 setup_var 0x2 0x1
@@ -87,10 +88,15 @@ setup_var 0x147 0x0
 
 ```
 
+
 ### Reboot
+kemudian reboot, dilanjutkan dengan ketik :
 
 ``` 
 reboot
 ```
+Setelah itu lanjut instalasi seperti biasa, bila ada pertanyaan silahkan DM
+
+
 
 Thanks to varszegimarcell 
